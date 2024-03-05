@@ -28,7 +28,7 @@ function AppHeader (){
     const {crypto}=useCrypto();
     const [modal, setModal] = useState(false);
     const [coin, setCoin]=useState(null);
-    const [drawer, setDrawer]=useState(false);
+    const [drawer, setDrawer]=useState(true);
 
    useEffect(()=> {
        const keypress= event =>{
@@ -79,9 +79,11 @@ function handleSelect(value){
 
             <Drawer width={600}
                     title="Add Assets"
-                    onClose={()=> setDrawer(false)} open={drawer}
+                    onClose={()=> setDrawer(false)}
+                    open={drawer}
+                    destroyOnClose
             >
-            <AddAssetForm/>
+            <AddAssetForm onClose={()=> setDrawer(false)}/>
             </Drawer>
 
         </Layout.Header>
